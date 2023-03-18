@@ -11,7 +11,7 @@ Citizen.CreateThread(function()
                 {
                     type = "client",
                     icon = "fas fa-dollar-sign",
-                    label = "Open " .. v.name,
+                    label = Lang:t('open') .. v.name,
                     action = function(entity)
                         if IsPedAPlayer(entity) then return false end
                         TriggerEvent('re2-bank:openBank', bank)
@@ -38,26 +38,26 @@ RegisterNetEvent('re2-bank:openBank', function(bankId)
     local charinfo = player.charinfo
     exports['rsg-menu']:openMenu({
         {
-            header = "Welcome To " .. bankLocation.name,
+            header = Lang:t('welcome') .. bankLocation.name,
             txt = charinfo.firstname .. " " .. charinfo.lastname,
             isMenuHeader = true,
         },
         {
-            header = "Personal Info ",
+            header = Lang:t('personalInfo'),
             txt = charinfo.firstname .. " " .. charinfo.lastname,
             disabled = true,
         },
         {
-            header = "Chash : " .. money.cash .. " $",
+            header = Lang:t('cash') .. money.cash .. " $",
             disabled = true,
         },
         {
-            header = "Bank : " .. money[bankLocation.bankType] .. " $",
+            header = Lang:t('bank') .. money[bankLocation.bankType] .. " $",
             disabled = true,
         },
         {
-            header = "Deposit",
-            txt = "Deposit Money To Bank",
+            header = Lang:t('deposit'),
+            txt = Lang:t('depositTxt'),
             params = {
                 event = 're2-bank:deposit',
                 args = {
@@ -66,8 +66,8 @@ RegisterNetEvent('re2-bank:openBank', function(bankId)
             }
         },
         {
-            header = "Withdraw",
-            txt = "Withdraw Money From Bank",
+            header = Lang:t('withdraw'),
+            txt = Lang:t('withdrawTxt'),
             params = {
                 event = 're2-bank:withdraw',
                 args = {
@@ -81,11 +81,11 @@ end)
 
 RegisterNetEvent('re2-bank:withdraw', function(data)
     local inputdata = exports['rsg-input']:ShowInput({
-        header = "Withfraw",
-        submitText = "withdraw",
+        header = Lang:t('withdraw'),
+        submitText = Lang:t('submit'),
         inputs = {
             {
-                text = "amount",
+                text = Lang:t('amount'),
                 input = "amount",
                 type = "number",
                 isRequired = true
@@ -101,11 +101,11 @@ end)
 
 RegisterNetEvent('re2-bank:deposit', function(data)
     local inputdata = exports['rsg-input']:ShowInput({
-        header = "Deposit",
-        submitText = "deposit",
+        header = Lang:t('deposit'),
+        submitText = Lang:t('submit'),
         inputs = {
             {
-                text = "amount",
+                text = Lang:t('amount'),
                 input = "amount",
                 type = "number",
                 isRequired = true

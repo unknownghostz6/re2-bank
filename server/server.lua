@@ -10,10 +10,10 @@ AddEventHandler('re2-bank:server:withdraw', function(amount, data)
     if currentBankAmount >= requestAmount then
         xPlayer.Functions.RemoveMoney(data.bankType, requestAmount, 'banking-quick-withdraw')
         xPlayer.Functions.AddMoney('cash', requestAmount, 'banking-quick-withdraw')
-        TriggerClientEvent('RSGCore:Notify', src, "You withdraw "..amount.." from Bank" , 'success')
+        TriggerClientEvent('RSGCore:Notify', src, Lang:t('withdrawSuccess')..amount..Lang:t('fromBank') , 'success')
 
     else
-        TriggerClientEvent('RSGCore:Notify', src, "U dont Have this Much Money in your Bank", 'error')
+        TriggerClientEvent('RSGCore:Notify', src, Lang:t('withdrawError'), 'error')
     end
 end)
 
@@ -27,8 +27,8 @@ AddEventHandler('re2-bank:server:deposit', function(amount, data)
     if currentCashAmount >= requestAmount then
         xPlayer.Functions.RemoveMoney("cash", requestAmount, 'banking-quick-deposit')
         xPlayer.Functions.AddMoney(data.bankType, requestAmount, 'banking-quick-deposit')
-        TriggerClientEvent('RSGCore:Notify', src, "You Deposit "..amount.." To Bank" , 'success')
+        TriggerClientEvent('RSGCore:Notify', src, Lang:t('depositSuccess')..amount..Lang:t('toBank') , 'success')
     else
-        TriggerClientEvent('RSGCore:Notify', src, "U dont Have this Much Money in your Packet", 'error')
+        TriggerClientEvent('RSGCore:Notify', src, Lang:t('depositError'), 'error')
     end
 end)
