@@ -2,8 +2,8 @@ fx_version 'cerulean'
 rdr3_warning 'I acknowledge that this is a prerelease build of RedM, and I am aware my resources *will* become incompatible once RedM ships.'
 game 'rdr3'
 
-author 'RexShack#3041'
-description 'rsg-example'
+author 'Hamid#7784'
+description 're2-bank'
 
 client_scripts {
     'client/client.lua'
@@ -21,6 +21,8 @@ shared_scripts {
 
 dependencies {
     'rsg-core',
+    'rsg-input',
+    'rsg-menu'
 }
 
 lua54 'yes'
